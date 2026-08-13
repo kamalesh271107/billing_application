@@ -55,7 +55,7 @@ const OrdersPage = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 flex flex-col lg:flex-row gap-4 items-center justify-between">
+      <div className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 flex flex-col lg:flex-row gap-3 sm:gap-4 items-stretch lg:items-center justify-between">
         {/* Search */}
         <div className="relative w-full lg:w-72">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -64,17 +64,17 @@ const OrdersPage = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Order #, Cashier, or Customer..."
-            className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-xs text-white focus:outline-none focus:border-indigo-500"
+            className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500"
           />
         </div>
 
         {/* Date Filter & Payment Filter */}
-        <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
           {/* Payment Method Selector */}
           <select
             value={paymentMethodFilter}
             onChange={(e) => setPaymentMethodFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-700 text-xs text-white rounded-xl px-3 py-2 focus:outline-none focus:border-indigo-500"
+            className="bg-slate-900 border border-slate-700 text-xs text-white rounded-xl px-3 py-2.5 focus:outline-none focus:border-indigo-500"
           >
             <option value="All">All Payment Methods</option>
             <option value="cash">Cash Only</option>
@@ -88,14 +88,14 @@ const OrdersPage = () => {
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="bg-slate-900 border border-slate-700 text-xs text-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:border-indigo-500"
+              className="bg-slate-900 border border-slate-700 text-xs text-slate-300 rounded-xl px-2.5 py-2.5 focus:outline-none focus:border-indigo-500 w-full sm:w-auto"
             />
             <span className="text-xs text-slate-500">to</span>
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="bg-slate-900 border border-slate-700 text-xs text-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:border-indigo-500"
+              className="bg-slate-900 border border-slate-700 text-xs text-slate-300 rounded-xl px-2.5 py-2.5 focus:outline-none focus:border-indigo-500 w-full sm:w-auto"
             />
           </div>
         </div>
@@ -103,18 +103,18 @@ const OrdersPage = () => {
 
       {/* Orders Table */}
       <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
+        <div className="overflow-x-auto scrollbar-thin">
+          <table className="w-full text-left text-xs text-slate-300 min-w-[700px]">
             <thead className="bg-slate-900/90 text-slate-400 uppercase font-semibold border-b border-slate-700 text-[11px]">
               <tr>
-                <th className="p-4">Order Number</th>
-                <th className="p-4">Date & Time</th>
-                <th className="p-4">Cashier</th>
-                <th className="p-4">Customer</th>
-                <th className="p-4">Items Count</th>
-                <th className="p-4">Payment Method</th>
-                <th className="p-4">Grand Total</th>
-                <th className="p-4 text-right">Actions</th>
+                <th className="p-3.5 whitespace-nowrap">Order Number</th>
+                <th className="p-3.5 whitespace-nowrap">Date & Time</th>
+                <th className="p-3.5 whitespace-nowrap">Cashier</th>
+                <th className="p-3.5 whitespace-nowrap">Customer</th>
+                <th className="p-3.5 whitespace-nowrap">Items</th>
+                <th className="p-3.5 whitespace-nowrap">Payment Method</th>
+                <th className="p-3.5 whitespace-nowrap">Grand Total</th>
+                <th className="p-3.5 whitespace-nowrap text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-700/60">
@@ -127,16 +127,16 @@ const OrdersPage = () => {
               ) : (
                 orders.map((ord) => (
                   <tr key={ord._id} className="hover:bg-slate-700/30 transition-colors">
-                    <td className="p-4 font-mono font-bold text-indigo-400 text-xs">{ord.orderNumber}</td>
-                    <td className="p-4 text-slate-300">
+                    <td className="p-3.5 font-mono font-bold text-indigo-400 text-xs whitespace-nowrap">{ord.orderNumber}</td>
+                    <td className="p-3.5 text-slate-300 whitespace-nowrap">
                       {new Date(ord.createdAt).toLocaleDateString()} • {new Date(ord.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </td>
-                    <td className="p-4 font-semibold text-slate-200">{ord.cashierName}</td>
-                    <td className="p-4 text-slate-300">{ord.customerName || 'Walk-in'}</td>
-                    <td className="p-4 font-semibold">
+                    <td className="p-3.5 font-semibold text-slate-200 whitespace-nowrap">{ord.cashierName}</td>
+                    <td className="p-3.5 text-slate-300 whitespace-nowrap">{ord.customerName || 'Walk-in'}</td>
+                    <td className="p-3.5 font-semibold whitespace-nowrap">
                       {ord.items.reduce((s, i) => s + i.quantity, 0)} items
                     </td>
-                    <td className="p-4">
+                    <td className="p-3.5 whitespace-nowrap">
                       <span
                         className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase ${
                           ord.paymentMethod === 'cash'
@@ -152,8 +152,8 @@ const OrdersPage = () => {
                         {ord.paymentMethod}
                       </span>
                     </td>
-                    <td className="p-4 font-bold text-emerald-400 text-sm">{formatCurrency(ord.grandTotal)}</td>
-                    <td className="p-4 text-right space-x-2">
+                    <td className="p-3.5 font-bold text-emerald-400 text-sm whitespace-nowrap">{formatCurrency(ord.grandTotal)}</td>
+                    <td className="p-3.5 text-right whitespace-nowrap">
                       <button
                         onClick={() => setSelectedOrder(ord)}
                         className="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg text-xs font-semibold inline-flex items-center gap-1 transition-colors"

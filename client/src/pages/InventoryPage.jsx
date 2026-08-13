@@ -62,13 +62,13 @@ const InventoryPage = () => {
   return (
     <div className="max-w-7xl mx-auto p-4 sm:p-6 space-y-6">
       {/* Top Header & Actions */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80 shadow-xl">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-800/80 p-4 sm:p-6 rounded-2xl border border-slate-700/80 shadow-xl">
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center">
-            <Package className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center flex-shrink-0">
+            <Package className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-slate-100">Inventory & Stock Management</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-slate-100">Inventory & Stock Management</h1>
             <p className="text-xs text-slate-400">View, add, update, and manage low stock thresholds</p>
           </div>
         </div>
@@ -78,7 +78,7 @@ const InventoryPage = () => {
             setSelectedProduct(null);
             setShowModal(true);
           }}
-          className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow-lg shadow-indigo-600/30 transition-all active:scale-95"
+          className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all active:scale-95"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Product</span>
@@ -86,7 +86,7 @@ const InventoryPage = () => {
       </div>
 
       {/* Filters Bar */}
-      <div className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 flex flex-col md:flex-row gap-3 md:gap-4 items-stretch md:items-center justify-between">
         {/* Search */}
         <div className="relative w-full md:w-80">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -95,13 +95,13 @@ const InventoryPage = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by Product Name or SKU..."
-            className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-xs text-white focus:outline-none focus:border-indigo-500"
+            className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500"
           />
         </div>
 
         <div className="flex items-center space-x-4 w-full md:w-auto">
           {/* Low Stock Toggle */}
-          <label className="flex items-center space-x-2 text-xs font-semibold text-amber-300 cursor-pointer bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-xl">
+          <label className="flex items-center space-x-2 text-xs font-semibold text-amber-300 cursor-pointer bg-amber-500/10 border border-amber-500/30 px-3 py-2 rounded-xl w-full md:w-auto justify-center">
             <input
               type="checkbox"
               checked={lowStockOnly}
@@ -116,17 +116,17 @@ const InventoryPage = () => {
 
       {/* Products Table */}
       <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
+        <div className="overflow-x-auto scrollbar-thin">
+          <table className="w-full text-left text-xs text-slate-300 min-w-[750px]">
             <thead className="bg-slate-900/90 text-slate-400 uppercase font-semibold border-b border-slate-700 text-[11px]">
               <tr>
-                <th className="p-4">Product Details</th>
-                <th className="p-4">SKU / Barcode</th>
-                <th className="p-4">Category</th>
-                <th className="p-4">Selling Price</th>
-                <th className="p-4">Cost Price</th>
-                <th className="p-4">Stock Level</th>
-                <th className="p-4 text-right">Actions</th>
+                <th className="p-3.5 whitespace-nowrap">Product Details</th>
+                <th className="p-3.5 whitespace-nowrap">SKU / Barcode</th>
+                <th className="p-3.5 whitespace-nowrap">Category</th>
+                <th className="p-3.5 whitespace-nowrap">Selling Price</th>
+                <th className="p-3.5 whitespace-nowrap">Cost Price</th>
+                <th className="p-3.5 whitespace-nowrap">Stock Level</th>
+                <th className="p-3.5 whitespace-nowrap text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-700/60">

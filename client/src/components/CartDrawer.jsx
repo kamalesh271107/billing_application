@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import CheckoutModal from './CheckoutModal';
 
-const CartDrawer = () => {
+const CartDrawer = ({ onClose }) => {
   const {
     cartItems,
     updateQuantity,
@@ -42,6 +42,7 @@ const CartDrawer = () => {
     holdCurrentOrder(holdNote);
     setHoldNote('');
     setShowHoldNoteInput(false);
+    if (onClose) onClose();
   };
 
   return (
@@ -57,15 +58,27 @@ const CartDrawer = () => {
             </span>
           </div>
 
-          {cartItems.length > 0 && (
-            <button
-              onClick={clearCart}
-              className="text-xs font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1"
-            >
-              <Trash2 className="w-3.5 h-3.5" />
-              Clear
-            </button>
-          )}
+          <div className="flex items-center space-x-2">
+            {cartItems.length > 0 && (
+              <button
+                onClick={clearCart}
+                className="text-xs font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 px-2 py-1 rounded-lg transition-colors flex items-center gap-1"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+                Clear
+              </button>
+            )}
+            {onClose && (
+              <button
+                onClick={onClose}
+                className="p-1 text-slate-400 hover:text-white rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors"
+                title="Close Cart"
+              >
+                <span className="sr-only">Close</span>
+                ✕
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Customer Input */}

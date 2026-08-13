@@ -87,7 +87,7 @@ const UserModal = ({ userToEdit, onClose, onSave }) => {
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} className="p-5 space-y-4">
+        <form onSubmit={handleSubmit} className="p-5 space-y-4 max-h-[75vh] overflow-y-auto">
           {error && (
             <div className="bg-red-500/20 border border-red-500/40 text-red-300 p-3 rounded-xl text-xs flex items-center gap-2">
               <AlertCircle className="w-4 h-4 flex-shrink-0" />

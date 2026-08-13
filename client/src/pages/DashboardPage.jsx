@@ -68,13 +68,13 @@ const DashboardPage = () => {
   return (
     <div className="max-w-7xl mx-auto p-4 sm:p-6 space-y-6">
       {/* Page Header */}
-      <div className="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80 shadow-xl flex items-center justify-between">
+      <div className="bg-slate-800/80 p-4 sm:p-6 rounded-2xl border border-slate-700/80 shadow-xl flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 border border-purple-500/30 flex items-center justify-center">
-            <BarChart3 className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-600/20 text-purple-400 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
+            <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-slate-100">Sales & Business Analytics</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-slate-100">Sales & Business Analytics</h1>
             <p className="text-xs text-slate-400">Real-time performance KPIs, revenue trends, and inventory health</p>
           </div>
         </div>
@@ -83,64 +83,64 @@ const DashboardPage = () => {
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Total Revenue */}
-        <div className="bg-slate-800/80 border border-slate-700/80 p-5 rounded-2xl shadow-lg relative overflow-hidden">
+        <div className="bg-slate-800/80 border border-slate-700/80 p-4 sm:p-5 rounded-2xl shadow-lg relative overflow-hidden">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Sales Revenue</p>
-              <h3 className="text-2xl font-extrabold text-white mt-1">{formatCurrency(stats.totalRevenue)}</h3>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-white mt-1">{formatCurrency(stats.totalRevenue)}</h3>
               <p className="text-xs text-emerald-400 font-semibold mt-1 flex items-center gap-1">
                 <TrendingUp className="w-3.5 h-3.5" />
                 <span>{stats.totalOrdersCount} Total Paid Orders</span>
               </p>
             </div>
-            <div className="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20 flex items-center justify-center w-12 h-12">
-              <span className="text-2xl font-extrabold">₹</span>
+            <div className="p-2.5 sm:p-3 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0">
+              <span className="text-xl sm:text-2xl font-extrabold">₹</span>
             </div>
           </div>
         </div>
 
         {/* Today's Sales */}
-        <div className="bg-slate-800/80 border border-slate-700/80 p-5 rounded-2xl shadow-lg relative overflow-hidden">
+        <div className="bg-slate-800/80 border border-slate-700/80 p-4 sm:p-5 rounded-2xl shadow-lg relative overflow-hidden">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Today's Revenue</p>
-              <h3 className="text-2xl font-extrabold text-indigo-400 mt-1">{formatCurrency(stats.todayRevenue)}</h3>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-indigo-400 mt-1">{formatCurrency(stats.todayRevenue)}</h3>
               <p className="text-xs text-slate-400 font-semibold mt-1">
                 {stats.todayOrdersCount} orders placed today
               </p>
             </div>
-            <div className="p-3 bg-indigo-500/10 text-indigo-400 rounded-xl border border-indigo-500/20">
-              <ShoppingBag className="w-6 h-6" />
+            <div className="p-2.5 sm:p-3 bg-indigo-500/10 text-indigo-400 rounded-xl border border-indigo-500/20 flex-shrink-0">
+              <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
           </div>
         </div>
 
         {/* Top Product */}
-        <div className="bg-slate-800/80 border border-slate-700/80 p-5 rounded-2xl shadow-lg relative overflow-hidden">
+        <div className="bg-slate-800/80 border border-slate-700/80 p-4 sm:p-5 rounded-2xl shadow-lg relative overflow-hidden">
           <div className="flex justify-between items-start">
             <div className="min-w-0 pr-2">
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Top Selling Product</p>
-              <h3 className="text-base font-bold text-white mt-1 truncate">{stats.topSellingProduct.name}</h3>
+              <h3 className="text-sm sm:text-base font-bold text-white mt-1 truncate">{stats.topSellingProduct.name}</h3>
               <p className="text-xs text-amber-400 font-semibold mt-1">
                 {stats.topSellingProduct.quantity} units sold ({formatCurrency(stats.topSellingProduct.revenue)})
               </p>
             </div>
-            <div className="p-3 bg-amber-500/10 text-amber-400 rounded-xl border border-amber-500/20 flex-shrink-0">
-              <Award className="w-6 h-6" />
+            <div className="p-2.5 sm:p-3 bg-amber-500/10 text-amber-400 rounded-xl border border-amber-500/20 flex-shrink-0">
+              <Award className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
           </div>
         </div>
 
         {/* Low Stock Alert Count */}
-        <div className="bg-slate-800/80 border border-slate-700/80 p-5 rounded-2xl shadow-lg relative overflow-hidden">
+        <div className="bg-slate-800/80 border border-slate-700/80 p-4 sm:p-5 rounded-2xl shadow-lg relative overflow-hidden">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Low Stock Alerts</p>
-              <h3 className="text-2xl font-extrabold text-amber-400 mt-1">{stats.lowStockCount}</h3>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-amber-400 mt-1">{stats.lowStockCount}</h3>
               <p className="text-xs text-slate-400 font-semibold mt-1">Items requiring reorder</p>
             </div>
-            <div className="p-3 bg-red-500/10 text-red-400 rounded-xl border border-red-500/20">
-              <AlertTriangle className="w-6 h-6" />
+            <div className="p-2.5 sm:p-3 bg-red-500/10 text-red-400 rounded-xl border border-red-500/20 flex-shrink-0">
+              <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
           </div>
         </div>
@@ -149,18 +149,18 @@ const DashboardPage = () => {
       {/* Visual Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Daily Sales Trend Chart (7 Days) */}
-        <div className="lg:col-span-8 bg-slate-800/80 border border-slate-700/80 p-5 rounded-2xl shadow-xl space-y-4">
+        <div className="lg:col-span-8 bg-slate-800/80 border border-slate-700/80 p-4 sm:p-5 rounded-2xl shadow-xl space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <BarChart3 className="w-5 h-5 text-indigo-400" />
               <h3 className="font-bold text-slate-100 text-sm">7-Day Sales Trend (₹)</h3>
             </div>
           </div>
-          <div className="h-72 w-full pt-4">
+          <div className="h-64 sm:h-72 w-full pt-4">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData.dailyTrend}>
-                <XAxis dataKey="day" stroke="#94a3b8" fontSize={12} tickLine={false} />
-                <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} />
+                <XAxis dataKey="day" stroke="#94a3b8" fontSize={11} tickLine={false} />
+                <YAxis stroke="#94a3b8" fontSize={11} tickLine={false} />
                 <Tooltip
                   formatter={(value) => [formatCurrency(value), 'Revenue']}
                   contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', color: '#fff' }}
@@ -172,12 +172,12 @@ const DashboardPage = () => {
         </div>
 
         {/* Revenue by Category Pie Chart */}
-        <div className="lg:col-span-4 bg-slate-800/80 border border-slate-700/80 p-5 rounded-2xl shadow-xl space-y-4">
+        <div className="lg:col-span-4 bg-slate-800/80 border border-slate-700/80 p-4 sm:p-5 rounded-2xl shadow-xl space-y-4">
           <div className="flex items-center space-x-2">
             <PieChartIcon className="w-5 h-5 text-purple-400" />
             <h3 className="font-bold text-slate-100 text-sm">Sales by Category</h3>
           </div>
-          <div className="h-72 w-full flex items-center justify-center">
+          <div className="h-64 sm:h-72 w-full flex items-center justify-center">
             {chartData.salesByCategory.length === 0 ? (
               <p className="text-xs text-slate-500">No category sales recorded yet</p>
             ) : (
@@ -187,8 +187,8 @@ const DashboardPage = () => {
                     data={chartData.salesByCategory}
                     cx="50%"
                     cy="50%"
-                    innerRadius={55}
-                    outerRadius={85}
+                    innerRadius={50}
+                    outerRadius={80}
                     paddingAngle={4}
                     dataKey="value"
                   >
@@ -208,28 +208,28 @@ const DashboardPage = () => {
       </div>
 
       {/* Top 5 Best Selling Items Table */}
-      <div className="bg-slate-800/80 border border-slate-700/80 p-5 rounded-2xl shadow-xl space-y-4">
+      <div className="bg-slate-800/80 border border-slate-700/80 p-4 sm:p-5 rounded-2xl shadow-xl space-y-4">
         <h3 className="font-bold text-slate-100 text-sm flex items-center gap-2">
           <Award className="w-5 h-5 text-amber-400" />
           <span>Top Best Selling Products Ranking</span>
         </h3>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
+        <div className="overflow-x-auto scrollbar-thin">
+          <table className="w-full text-left text-xs text-slate-300 min-w-[500px]">
             <thead className="bg-slate-900/90 text-slate-400 uppercase font-semibold border-b border-slate-700">
               <tr>
-                <th className="p-3">Rank</th>
-                <th className="p-3">Product Name</th>
-                <th className="p-3">Units Sold</th>
-                <th className="p-3">Total Generated Revenue</th>
+                <th className="p-3 whitespace-nowrap">Rank</th>
+                <th className="p-3 whitespace-nowrap">Product Name</th>
+                <th className="p-3 whitespace-nowrap">Units Sold</th>
+                <th className="p-3 whitespace-nowrap">Total Generated Revenue</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-700/60">
               {stats.topProductsList.map((item, index) => (
                 <tr key={index} className="hover:bg-slate-700/30">
-                  <td className="p-3 font-bold text-indigo-400">#{index + 1}</td>
-                  <td className="p-3 font-semibold text-slate-100">{item.name}</td>
-                  <td className="p-3 font-bold text-slate-200">{item.quantity} units</td>
-                  <td className="p-3 font-bold text-emerald-400">{formatCurrency(item.revenue)}</td>
+                  <td className="p-3 font-bold text-indigo-400 whitespace-nowrap">#{index + 1}</td>
+                  <td className="p-3 font-semibold text-slate-100 whitespace-nowrap">{item.name}</td>
+                  <td className="p-3 font-bold text-slate-200 whitespace-nowrap">{item.quantity} units</td>
+                  <td className="p-3 font-bold text-emerald-400 whitespace-nowrap">{formatCurrency(item.revenue)}</td>
                 </tr>
               ))}
             </tbody>
