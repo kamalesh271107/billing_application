@@ -141,14 +141,15 @@ const Navbar = () => {
           <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Held Orders Quick Button */}
             <button
+              type="button"
               onClick={() => setShowHoldModal(true)}
-              className="relative p-2 text-slate-300 hover:text-white bg-slate-900/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3"
+              className="relative p-2 text-slate-300 hover:text-white bg-slate-900/60 hover:bg-slate-800 border border-slate-700/60 hover:border-amber-500/50 rounded-xl transition-all active:scale-95 flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3"
               title="View Held Orders"
             >
               <PauseCircle className="w-5 h-5 text-amber-400" />
               <span className="text-xs font-semibold hidden sm:inline text-slate-200">Held Carts</span>
               {heldOrders.length > 0 && (
-                <span className="ml-0.5 bg-amber-500 text-slate-950 font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
+                <span className="ml-0.5 bg-amber-500 text-slate-950 font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center animate-pulse shadow-md shadow-amber-500/40">
                   {heldOrders.length}
                 </span>
               )}
@@ -175,8 +176,9 @@ const Navbar = () => {
               </div>
 
               <button
+                type="button"
                 onClick={handleLogout}
-                className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-xl transition-all border border-transparent hover:border-red-500/20"
+                className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-xl transition-all border border-transparent hover:border-red-500/20 active:scale-90"
                 title="Sign out of POS"
               >
                 <LogOut className="w-5 h-5" />

@@ -1,10 +1,11 @@
-import React from 'react';
-import { Plus, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { Plus, AlertTriangle, Check } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { formatCurrency } from '../utils/formatters';
 
 const ProductCard = ({ product }) => {
   const { addToCart, cartItems } = useCart();
+  const [justAdded, setJustAdded] = useState(false);
 
   const isLowStock = product.stock <= product.lowStockThreshold && product.stock > 0;
   const isOutOfStock = product.stock <= 0;
@@ -13,15 +14,24 @@ const ProductCard = ({ product }) => {
   const itemInCart = cartItems.find((item) => item.product._id === product._id);
   const cartQty = itemInCart ? itemInCart.quantity : 0;
 
+  const handleAdd = (e) => {
+    if (e) e.stopPropagation();
+    if (isOutOfStock) return;
+
+    addToCart(product);
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 700);
+  };
+
   return (
     <div
-      onClick={() => !isOutOfStock && addToCart(product)}
+      onClick={handleAdd}
       className={`group relative bg-slate-800/80 border rounded-2xl p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer overflow-hidden ${
         isOutOfStock
           ? 'border-slate-800 opacity-60 cursor-not-allowed'
           : isLowStock
-          ? 'border-amber-500/40 hover:border-amber-400 hover:shadow-lg hover:shadow-amber-500/10'
-          : 'border-slate-700/70 hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/10 hover:-translate-y-0.5'
+          ? 'border-amber-500/40 hover:border-amber-400 hover:shadow-lg hover:shadow-amber-500/10 active:scale-[0.99]'
+          : 'border-slate-700/70 hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/10 hover:-translate-y-0.5 active:scale-[0.99]'
       }`}
     >
       {/* Top Image Container */}
@@ -42,7 +52,7 @@ const ProductCard = ({ product }) => {
 
         {/* Quantity Badge in Cart */}
         {cartQty > 0 && (
-          <span className="absolute top-2 right-2 bg-indigo-600 text-white font-bold text-xs w-6 h-6 rounded-full flex items-center justify-center shadow-lg shadow-indigo-600/40 ring-2 ring-indigo-400">
+          <span className="absolute top-2 right-2 bg-indigo-600 text-white font-bold text-xs w-6 h-6 rounded-full flex items-center justify-center shadow-lg shadow-indigo-600/40 ring-2 ring-indigo-400 animate-in zoom-in duration-150">
             {cartQty}
           </span>
         )}
@@ -78,19 +88,28 @@ const ProductCard = ({ product }) => {
           </div>
 
           <button
+            type="button"
             disabled={isOutOfStock}
-            onClick={(e) => {
-              e.stopPropagation();
-              if (!isOutOfStock) addToCart(product);
-            }}
-            className={`p-2.5 rounded-xl font-medium text-xs flex items-center gap-1 transition-all ${
+            onClick={handleAdd}
+            className={`px-3 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all duration-200 active:scale-90 ${
               isOutOfStock
-                ? 'bg-slate-700/50 text-slate-500 cursor-not-allowed'
-                : 'bg-indigo-600/90 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/30 active:scale-95'
+                ? 'bg-slate-700/50 text-slate-500 cursor-not-allowed border border-transparent'
+                : justAdded
+                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/40 scale-105'
+                : 'bg-indigo-600/90 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/30 hover:shadow-indigo-500/50'
             }`}
           >
-            <Plus className="w-4 h-4" />
-            <span className="hidden sm:inline font-semibold">Add</span>
+            {justAdded ? (
+              <>
+                <Check className="w-4 h-4 animate-in zoom-in" />
+                <span className="hidden sm:inline">Added!</span>
+              </>
+            ) : (
+              <>
+                <Plus className="w-4 h-4" />
+                <span className="hidden sm:inline">Add</span>
+              </>
+            )}
           </button>
         </div>
       </div>

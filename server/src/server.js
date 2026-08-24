@@ -10,6 +10,7 @@ import productRoutes from './routes/productRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import analyticsRoutes from './routes/analyticsRoutes.js';
+import paymentRoutes from './routes/paymentRoutes.js';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -43,6 +44,8 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/payment', paymentRoutes);
+
 
 // Global Error Handler
 app.use(errorHandler);

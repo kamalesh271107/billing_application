@@ -68,21 +68,23 @@ const HoldOrdersModal = ({ onClose }) => {
 
                   <div className="flex items-center space-x-2">
                     <button
+                      type="button"
                       onClick={() => removeHeldOrder(held.id)}
-                      className="p-2 text-slate-500 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
+                      className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-xl transition-all border border-transparent hover:border-red-500/20 active:scale-90"
                       title="Discard held order"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
 
                     <button
+                      type="button"
                       onClick={() => {
                         resumeHeldOrder(held.id);
                         onClose();
                       }}
-                      className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg text-xs flex items-center gap-1 shadow-md shadow-indigo-600/30 transition-all active:scale-95"
+                      className="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 shadow-md shadow-indigo-600/30 hover:shadow-indigo-500/50 transition-all active:scale-95"
                     >
-                      <Play className="w-3.5 h-3.5" />
+                      <Play className="w-3.5 h-3.5 fill-current" />
                       <span>Resume</span>
                     </button>
                   </div>
@@ -95,8 +97,9 @@ const HoldOrdersModal = ({ onClose }) => {
         {/* Footer */}
         <div className="p-3 bg-slate-950 border-t border-slate-800 text-right">
           <button
+            type="button"
             onClick={onClose}
-            className="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-semibold"
+            className="px-4 py-2 bg-slate-800 hover:bg-slate-700/80 text-slate-300 hover:text-white rounded-xl text-xs font-semibold border border-slate-700/80 transition-all active:scale-95"
           >
             Close
           </button>

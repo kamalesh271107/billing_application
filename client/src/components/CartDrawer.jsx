@@ -202,17 +202,18 @@ const CartDrawer = ({ onClose }) => {
 
             {/* Hold Order Note Dropdown */}
             {showHoldNoteInput && (
-              <div className="flex gap-2">
+              <div className="flex gap-2 animate-in fade-in zoom-in-95 duration-150">
                 <input
                   type="text"
                   value={holdNote}
                   onChange={(e) => setHoldNote(e.target.value)}
                   placeholder="Note for held cart..."
-                  className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none"
+                  className="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-amber-500 transition-colors"
                 />
                 <button
+                  type="button"
                   onClick={handleHoldOrder}
-                  className="bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold px-3 py-1.5 rounded-lg text-xs"
+                  className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3.5 py-2 rounded-xl text-xs shadow-md shadow-amber-500/20 active:scale-95 transition-all"
                 >
                   Save
                 </button>
@@ -244,16 +245,18 @@ const CartDrawer = ({ onClose }) => {
             {/* Action Buttons */}
             <div className="grid grid-cols-2 gap-2 pt-1">
               <button
+                type="button"
                 onClick={() => setShowHoldNoteInput(!showHoldNoteInput)}
-                className="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-300 font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors"
+                className="bg-slate-800 hover:bg-slate-700/80 border border-slate-700 hover:border-amber-500/50 text-amber-300 font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 shadow-sm"
               >
                 <PauseCircle className="w-4 h-4 text-amber-400" />
                 <span>Hold Order</span>
               </button>
 
               <button
+                type="button"
                 onClick={() => setShowCheckoutModal(true)}
-                className="bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-indigo-600/30 transition-all active:scale-95"
+                className="bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-500/50 transition-all duration-200 active:scale-95"
               >
                 <span>Checkout</span>
                 <ArrowRight className="w-4 h-4" />
