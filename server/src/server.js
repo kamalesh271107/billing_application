@@ -53,7 +53,9 @@ app.use(errorHandler);
 // Connect Database & Start Server
 const startServer = async () => {
   await connectDB();
-  await seedDatabase();
+  if (process.env.SEED_DB === 'true') {
+    await seedDatabase();
+  }
 
   app.listen(PORT, () => {
     console.log(`=================================================`);

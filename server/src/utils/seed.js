@@ -16,8 +16,8 @@ export const seedDatabase = async () => {
     } else {
       admin = await User.create({
         name: 'Kamalesh (Admin)',
-        email: 'kamalesh@gmail.com',
-        password: 'kamal@12345',
+        email: 'kamaleshkamalesh86298@gmail.com',
+        password: 'kamal@123',
         role: 'admin',
         status: 'active',
       });
